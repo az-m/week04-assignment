@@ -25,3 +25,12 @@ app.get("/messages", async (request, response) => {
   const query = await db.query(`SELECT * FROM messages`);
   response.json(query.rows);
 });
+
+app.post("/addMessage", (request, response) => {
+  const body = request.body;
+  const query = db.query(
+    `INSERT INTO messages (name, location, content) VALUES($1,$2,$3)`,
+    [body.name, body.location, body.content]
+  );
+  response.json(query);
+});
