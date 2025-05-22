@@ -40,6 +40,8 @@ function openTab(pageName) {
 
 const form = document.getElementById("form");
 
+form.addEventListener("submit", handleSubmit);
+
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -58,8 +60,6 @@ function handleSubmit(event) {
 
   form.reset();
 }
-
-form.addEventListener("submit", handleSubmit);
 
 // ====================================================================================
 
@@ -94,10 +94,13 @@ function makeMessageElements(messageArr) {
     const pMessage = document.createElement("p");
     const pTimestamp = document.createElement("p");
 
+    let date = new Date(item.created_at);
+    date = date.toDateString();
+
     pName.textContent = item.name;
     pLocation.textContent = item.location;
     pMessage.textContent = item.content;
-    pTimestamp.textContent = item.created_at;
+    pTimestamp.textContent = date;
 
     // get the div we just added back from the DOM to add its content elements
     const div = document.getElementsByClassName("message")[index];

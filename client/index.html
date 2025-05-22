@@ -9,28 +9,30 @@
     <title>Guestbook</title>
   </head>
   <body>
-    <h1>GUESTBOOK</h1>
+    <h1>Guestbook</h1>
     <nav class="tabs">
       <button class="tablink" id="signTab">Sign here</button>
       <button class="tablink" id="messageTab">Read messages</button>
     </nav>
-
     <div class="tabcontent" id="signPage">
-      <h2>SIGN THE GUESTBOOK</h2>
       <form id="form">
-        <fieldset>
+        <fieldset class="formfields">
           <label for="name">Name</label>
-          <input name="name" type="text" />
-          <label for="location">From</label>
-          <input name="location" type="text" />
+          <input name="name" type="text" class="short-field" required />
+          <label for="location">Visiting from</label>
+          <input name="location" type="text" class="short-field" required />
           <label for="content">Message</label>
-          <input name="content" type="text" />
+          <textarea
+            name="content"
+            type="textarea"
+            rows="10"
+            required
+          ></textarea>
           <button type="submit">Submit</button>
         </fieldset>
       </form>
     </div>
     <div class="tabcontent" id="messagePage">
-      <h2>READ THE MESSAGES</h2>
       <section id="messages"></section>
     </div>
   </body>
