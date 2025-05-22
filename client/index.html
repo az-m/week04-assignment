@@ -8,5 +8,28 @@
     <link rel="stylesheet" href="/src/style.css" />
     <title>Guestbook</title>
   </head>
-  <body></body>
+  <body>
+    <h1>GUESTBOOK</h1>
+    <nav class="tabs">
+      <button class="tablink" id="signTab">Sign here</button>
+      <button class="tablink" id="messageTab">Read messages</button>
+    </nav>
+
+    <div class="tabcontent" id="signPage">
+      <h2>SIGN THE GUESTBOOK</h2>
+      <form id="inputForm">
+        <fieldset>
+          <label for="name">Name</label>
+          <input name="name" type="text" />
+          <label for="location">From</label>
+          <input name="location" type="text" />
+          <label for="content">Message</label>
+          <input name="content" type="text" />
+        </fieldset>
+      </form>
+    </div>
+    <div class="tabcontent" id="messagePage">
+      <h2>READ THE MESSAGES</h2>
+    </div>
+  </body>
 </html>

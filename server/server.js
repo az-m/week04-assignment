@@ -20,3 +20,8 @@ app.get("/", function (request, response) {
 const db = new pg.Pool({
   connectionString: process.env.DB_URL,
 });
+
+app.get("/messages", async (request, response) => {
+  const query = await db.query(`SELECT * FROM messages`);
+  response.json(query.rows);
+});
