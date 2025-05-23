@@ -26,6 +26,7 @@ input {
 
 textarea {
   padding: 5px;
+  font-size: 1rem;
 }
 
 .tabs {
@@ -68,12 +69,15 @@ textarea {
 
 .filterfields {
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 
 .short-field {
   max-width: 400px;
+  padding-left: 5px;
+  font-size: 1rem;
 }
 
 .dateinput {
