@@ -140,3 +140,28 @@ function makeMessageElements(messageArr) {
 }
 
 // ====================================================================================
+
+const filter = document.getElementById("filter");
+filter.addEventListener("submit", getFiltered);
+
+async function getFiltered(event) {
+  const messages = await getByDate(event);
+  removeMessages();
+  makeMessageElements(messages);
+  filter.reset();
+}
+
+async function getByDate(event) {
+  event.preventDefault();
+
+  const formData = new FormData(filter);
+  const formValues = Object.fromEntries(formData);
+
+  const API =
+    apiRoot + `messagesByDate?from=${formValues.from}&to=${formValues.to}`;
+
+  const response = await fetch(API);
+  const messageData = await response.json();
+
+  return messageData;
+}

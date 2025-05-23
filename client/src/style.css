@@ -24,6 +24,10 @@ input {
   margin-bottom: 5px;
 }
 
+textarea {
+  padding: 5px;
+}
+
 .tabs {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -49,17 +53,33 @@ input {
   border-bottom: none;
 }
 
-.formfields {
+.formfields,
+.filterfields {
   display: flex;
-  flex-direction: column;
   margin: auto;
   width: 70%;
   border: none;
   padding-top: 50px;
 }
 
+.formfields {
+  flex-direction: column;
+}
+
+.filterfields {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .short-field {
   max-width: 400px;
+}
+
+.dateinput {
+  margin: 0 10px 0 5px;
+  padding: 4px;
+  border-radius: 10px;
 }
 
 .submit {
@@ -69,9 +89,13 @@ input {
   font-size: 1.1rem;
 }
 
+.subfilter {
+  padding: 2px 5px 2px 5px;
+}
+
 .page {
   background-color: #04043f;
-  height: 100dvh;
+  height: 200dvh;
 }
 
 .messages {
@@ -79,7 +103,7 @@ input {
   flex-direction: column;
   margin: auto;
   width: 70%;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .message {

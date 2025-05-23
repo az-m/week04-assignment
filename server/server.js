@@ -26,6 +26,17 @@ app.get("/messages", async (request, response) => {
   response.json(query.rows);
 });
 
+app.get("/messagesByDate", async (request, response) => {
+  const from = request.query.from;
+  const to = request.query.to;
+
+  const query = await db.query(
+    `SELECT * FROM messages WHERE created_at BETWEEN $1 AND $2`,
+    [from, to]
+  );
+  response.json(query.rows);
+});
+
 app.post("/addMessage", (request, response) => {
   const body = request.body;
   const query = db.query(

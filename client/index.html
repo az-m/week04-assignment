@@ -33,6 +33,15 @@
       </form>
     </div>
     <div class="page" id="messagePage">
+      <form id="filter">
+        <fieldset class="filterfields">
+          <label for="from">From:</label>
+          <input name="from" type="date" class="dateinput" required />
+          <label for="to">To:</label>
+          <input name="to" type="date" class="dateinput" required />
+          <button type="submit" class="subfilter">Submit</button>
+        </fieldset>
+      </form>
       <section id="messages" class="messages"></section>
     </div>
   </body>
