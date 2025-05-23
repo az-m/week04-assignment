@@ -99,7 +99,7 @@ textarea {
 
 .page {
   background-color: #04043f;
-  height: 200dvh;
+  min-height: 100dvh;
   animation: fadeEffect 0.5s;
 }
 
