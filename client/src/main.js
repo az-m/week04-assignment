@@ -61,9 +61,15 @@ function removeMessages() {
 
 // This section submits the form
 
+// globals
+
 const form = document.getElementById("form");
 
+// listener
+
 form.addEventListener("submit", handleSubmit);
+
+// handler adds new row to db table with form values
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -141,13 +147,24 @@ function makeMessageElements(messageArr) {
 
 // ====================================================================================
 
+// This section submits the message filter
+
+// globals
 const filter = document.getElementById("filter");
+
+// listener
+
 filter.addEventListener("submit", getFiltered);
+
+// handler
 
 async function getFiltered(event) {
   const messages = await getByDate(event);
+  // we'll take off the messages already there
   removeMessages();
+  // and use our message element creation function above to make new ones
   makeMessageElements(messages);
+
   filter.reset();
 }
 

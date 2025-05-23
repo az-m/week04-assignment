@@ -96,6 +96,16 @@ textarea {
 .page {
   background-color: #04043f;
   height: 200dvh;
+  animation: fadeEffect 0.5s;
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .messages {
