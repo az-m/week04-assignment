@@ -8,30 +8,53 @@ const apiRoot = import.meta.env.VITE_API_ROOT;
 
 // event listeners
 document.getElementById("signTab").addEventListener("click", () => {
-  openTab("signPage");
+  openTab("signTab", "signPage");
 });
 document.getElementById("messageTab").addEventListener("click", () => {
-  openTab("messagePage");
+  openTab("messageTab", "messagePage");
 });
 
 // event handler
-function openTab(pageName) {
-  let i, tabcontent;
+function openTab(tabName, pageName) {
+  let clickedTab = document.getElementById(tabName).getAttribute("class");
 
-  // hide all the tabs
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+  // we don't want repeated clicks on the messages tab to reload them, so let's not do anything if the tab is already the active one
+  if (clickedTab != "tab active") {
+    let i, pages;
+
+    // hide all the pages
+    pages = document.getElementsByClassName("page");
+    for (i = 0; i < pages.length; i++) {
+      pages[i].style.display = "none";
+    }
+
+    // make the one we selected visible again
+    document.getElementById(pageName).style.display = "block";
+
+    // swap the tab styles and either show or remove the messages (so that we don't add to them each time we go back to the messages tab, but get them fresh each time)
+    if (pageName === "messagePage") {
+      swapTabClassLeftRight();
+      showMessages();
+    } else {
+      swapTabClassRightLeft();
+      removeMessages();
+    }
   }
+}
 
-  // make the one we selected visible again
-  document.getElementById(pageName).style.display = "block";
+function swapTabClassLeftRight() {
+  document.getElementById("signTab").setAttribute("class", "tab inactive");
+  document.getElementById("messageTab").setAttribute("class", "tab active");
+}
 
-  if (pageName === "messagePage") {
-    showMessages();
-  } else {
-    removeMessages();
-  }
+function swapTabClassRightLeft() {
+  document.getElementById("messageTab").setAttribute("class", "tab inactive");
+  document.getElementById("signTab").setAttribute("class", "tab active");
+}
+
+function removeMessages() {
+  const section = document.getElementById("messages");
+  section.replaceChildren();
 }
 
 // ====================================================================================
@@ -90,9 +113,13 @@ function makeMessageElements(messageArr) {
     section.appendChild(newDiv);
 
     const pName = document.createElement("p");
+    pName.setAttribute("class", "msg-name");
     const pLocation = document.createElement("p");
+    pLocation.setAttribute("class", "msg-loc");
     const pMessage = document.createElement("p");
+    pMessage.setAttribute("class", "msg-cont");
     const pTimestamp = document.createElement("p");
+    pTimestamp.setAttribute("class", "msg-date");
 
     let date = new Date(item.created_at);
     date = date.toDateString();
@@ -106,15 +133,10 @@ function makeMessageElements(messageArr) {
     const div = document.getElementsByClassName("message")[index];
 
     div.appendChild(pName);
+    div.appendChild(pTimestamp);
     div.appendChild(pLocation);
     div.appendChild(pMessage);
-    div.appendChild(pTimestamp);
   });
 }
 
 // ====================================================================================
-
-function removeMessages() {
-  const section = document.getElementById("messages");
-  section.replaceChildren();
-}

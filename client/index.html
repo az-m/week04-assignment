@@ -11,10 +11,10 @@
   <body>
     <h1>Guestbook</h1>
     <nav class="tabs">
-      <button class="tablink" id="signTab">Sign here</button>
-      <button class="tablink" id="messageTab">Read messages</button>
+      <button class="tab active" id="signTab">Sign here</button>
+      <button class="tab inactive" id="messageTab">Read messages</button>
     </nav>
-    <div class="tabcontent" id="signPage">
+    <div class="page" id="signPage">
       <form id="form">
         <fieldset class="formfields">
           <label for="name">Name</label>
@@ -28,12 +28,12 @@
             rows="10"
             required
           ></textarea>
-          <button type="submit">Submit</button>
+          <button type="submit" class="submit">Submit</button>
         </fieldset>
       </form>
     </div>
-    <div class="tabcontent" id="messagePage">
-      <section id="messages"></section>
+    <div class="page" id="messagePage">
+      <section id="messages" class="messages"></section>
     </div>
   </body>
 </html>

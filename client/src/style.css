@@ -8,20 +8,6 @@
   display: none;
 }
 
-#signTab {
-  background-color: #04043f;
-  color: #fff;
-  border-top: 2px solid #fff;
-  border-left: 2px solid #fff;
-  border-bottom: none;
-}
-
-#messageTab {
-  background-color: #666;
-  color: #000;
-  border: none;
-}
-
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: #000;
@@ -44,9 +30,23 @@ input {
   padding-top: 20px;
 }
 
-.tablink {
+.tab {
   font-size: 1.5rem;
   padding: 10px 0 10px 0;
+}
+
+.inactive {
+  background-color: #555;
+  color: #fff;
+  border: none;
+}
+
+.active {
+  background-color: #04043f;
+  color: #fff;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-bottom: none;
 }
 
 .formfields {
@@ -62,7 +62,46 @@ input {
   max-width: 400px;
 }
 
-.tabcontent {
+.submit {
+  max-width: 100px;
+  margin-top: 10px;
+  padding: 10px 5px 10px 5px;
+  font-size: 1.1rem;
+}
+
+.page {
   background-color: #04043f;
   height: 100dvh;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 70%;
+  padding-top: 50px;
+}
+
+.message {
+  border: 4px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  font-size: 1.1rem;
+}
+
+.msg-name,
+.msg-date {
+  font-weight: 600;
+}
+
+.msg-loc,
+.msg-cont {
+  grid-column: 1 / span 2;
+}
+
+.msg-cont {
+  padding-top: 5px;
 }
