@@ -143,3 +143,18 @@ textarea {
 .msg-cont {
   padding-top: 5px;
 }
+
+.waiting {
+  font-size: 4em;
+  animation-name: progress;
+  animation-duration: 60s;
+  animation-timing-function: linear;
+}
+
+@keyframes progress {
+  from {
+  }
+  to {
+    transform: translate(400px);
+  }
+}

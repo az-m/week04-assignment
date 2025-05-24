@@ -34,6 +34,7 @@ function openTab(tabName, pageName) {
     // swap the tab styles and either show or remove the messages (so that we don't add to them each time we go back to the messages tab, but get them fresh each time)
     if (pageName === "messagePage") {
       swapTabClassLeftRight();
+      waitForIt();
       showMessages();
     } else {
       swapTabClassRightLeft();
@@ -55,6 +56,14 @@ function swapTabClassRightLeft() {
 function removeMessages() {
   const section = document.getElementById("messages");
   section.replaceChildren();
+}
+
+function waitForIt() {
+  const newDiv = document.createElement("div");
+  newDiv.setAttribute("class", "waiting");
+  newDiv.textContent = "---";
+  const section = document.getElementById("messages");
+  section.appendChild(newDiv);
 }
 
 // ====================================================================================
@@ -110,12 +119,13 @@ async function getMessages() {
 function makeMessageElements(messageArr) {
   // I'd like the newest messages at the top please
   messageArr.reverse();
-
+  const section = document.getElementById("messages");
+  section.replaceChildren();
   // creates the div for each upgrade item, populates it with the data, and adds it to the messages section in the dom
   messageArr.forEach((item, index) => {
     const newDiv = document.createElement("div");
     newDiv.setAttribute("class", "message");
-    const section = document.getElementById("messages");
+
     section.appendChild(newDiv);
 
     const pName = document.createElement("p");
